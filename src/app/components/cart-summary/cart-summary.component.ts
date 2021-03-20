@@ -10,9 +10,12 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart-summary.component.css'],
 })
 export class CartSummaryComponent implements OnInit {
-  cartItems: CartItem[]=[];
+  cartItems: CartItem[] = [];
 
-  constructor(private cartService: CartService, private toastrService:ToastrService) {}
+  constructor(
+    private cartService: CartService,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getCart();
@@ -22,8 +25,11 @@ export class CartSummaryComponent implements OnInit {
     this.cartItems = this.cartService.list();
   }
 
-  removeFromCart(product:Product){
+  removeFromCart(product: Product) {
     this.cartService.removeFromCart(product);
-    this.toastrService.error("Silindi",product.productName + " sepetten silindi.")
+    this.toastrService.error(
+      'Silindi',
+      product.productName + ' sepetten silindi.'
+    );
   }
 }
